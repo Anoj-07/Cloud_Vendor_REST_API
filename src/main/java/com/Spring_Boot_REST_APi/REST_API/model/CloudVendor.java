@@ -9,9 +9,6 @@ import jakarta.persistence.*;
 public class CloudVendor {
 
     @Id
-    @GeneratedValue(
-            strategy = GenerationType.AUTO
-    )
     public String vendorId;
     public String vendorName;
     public String VendorAddress;

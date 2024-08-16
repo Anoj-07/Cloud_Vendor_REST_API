@@ -19,10 +19,10 @@ public class cloudVendorImpl implements CloudVendorService{
     }
 
     @Override
-    public CloudVendor createCloudVendor(CloudVendor cloudVendor) {
-        CloudVendor cloudVendor1 = new CloudVendor();
-        cloudVendorRepository.save(cloudVendor1);
-        return cloudVendor;
+    public String createCloudVendor(CloudVendor cloudVendor) {
+//        CloudVendor cloudVendor1 = new CloudVendor();
+        cloudVendorRepository.save(cloudVendor);
+        return "Success full";
     }
 
     @Override
@@ -40,9 +40,7 @@ public class cloudVendorImpl implements CloudVendorService{
 
     @Override
     public CloudVendor getCloudVendorById(String cloudVendorId) {
-        Optional<CloudVendor> cloudVendor =
-                cloudVendorRepository.findById(cloudVendorId);
-        return cloudVendor.get();
+        return cloudVendorRepository.findById(cloudVendorId).get();
     }
 
     @Override
