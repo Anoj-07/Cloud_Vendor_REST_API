@@ -1,5 +1,6 @@
 package com.Spring_Boot_REST_APi.REST_API.service;
 
+import com.Spring_Boot_REST_APi.REST_API.Exception.CloudVendorNotFoundException;
 import com.Spring_Boot_REST_APi.REST_API.model.CloudVendor;
 import com.Spring_Boot_REST_APi.REST_API.repository.CloudVendorRepository;
 import org.springframework.stereotype.Service;
@@ -40,6 +41,10 @@ public class cloudVendorImpl implements CloudVendorService{
 
     @Override
     public CloudVendor getCloudVendorById(String cloudVendorId) {
+        /*Exception*/
+        if (cloudVendorRepository.findById(cloudVendorId).isEmpty()){
+            throw new CloudVendorNotFoundException("Requested Cloud vendor doesn't exit");
+        }
         return cloudVendorRepository.findById(cloudVendorId).get();
     }
 
